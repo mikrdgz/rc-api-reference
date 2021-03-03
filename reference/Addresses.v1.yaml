@@ -1,0 +1,193 @@
+openapi: 3.0.0
+info:
+  title: Addresses
+  version: '1.0'
+  description: ''
+servers:
+  - {}
+paths:
+  /addresses:
+    get:
+      summary: Retrieve an address
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  address:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      customer_id:
+                        type: number
+                      address1:
+                        type: string
+                        minLength: 1
+                      address2:
+                        type: string
+                        minLength: 1
+                      city:
+                        type: string
+                        minLength: 1
+                      company:
+                        type: string
+                        minLength: 1
+                      country:
+                        type: string
+                        minLength: 1
+                      created_at:
+                        type: string
+                        minLength: 1
+                      discounts:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          required:
+                            - id
+                          properties:
+                            id:
+                              type: number
+                      first_name:
+                        type: string
+                        minLength: 1
+                      last_name:
+                        type: string
+                        minLength: 1
+                      note_attributes:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          required:
+                            - name
+                            - value
+                          properties:
+                            name:
+                              type: string
+                              minLength: 1
+                            value:
+                              type: string
+                              minLength: 1
+                      order_note:
+                        type: string
+                        minLength: 1
+                      phone:
+                        type: string
+                        minLength: 1
+                      province:
+                        type: string
+                        minLength: 1
+                      shipping_lines_override:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          required:
+                            - code
+                            - price
+                            - title
+                          properties:
+                            code:
+                              type: string
+                              minLength: 1
+                            price:
+                              type: string
+                              minLength: 1
+                            title:
+                              type: string
+                              minLength: 1
+                      updated_at:
+                        type: string
+                        minLength: 1
+                      zip:
+                        type: string
+                        minLength: 1
+                    required:
+                      - id
+                      - customer_id
+                      - address1
+                      - address2
+                      - city
+                      - company
+                      - country
+                      - created_at
+                      - discounts
+                      - first_name
+                      - last_name
+                      - note_attributes
+                      - order_note
+                      - phone
+                      - province
+                      - shipping_lines_override
+                      - updated_at
+                      - zip
+                required:
+                  - address
+              examples: {}
+      operationId: get-addresses
+    post:
+      summary: Create an address
+      tags: []
+      responses: {}
+      operationId: post-addresses
+    put:
+      summary: Update an address
+      tags: []
+      responses: {}
+      operationId: put-addresses
+    delete:
+      summary: Delete an address
+      tags: []
+      responses: {}
+      operationId: delete-addresses
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      description: ''
+      x-examples:
+        Alice Smith:
+          id: 142
+          firstName: Alice
+          lastName: Smith
+          email: alice.smith@gmail.com
+          dateOfBirth: '1997-10-31'
+          emailVerified: true
+          signUpDate: '2019-08-24'
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        dateOfBirth:
+          type: string
+          format: date
+          example: '1997-10-31'
+        emailVerified:
+          type: boolean
+          description: Set to true if the user's email has been verified.
+        createDate:
+          type: string
+          format: date
+          description: The date that the user was created.
+      required:
+        - id
+        - firstName
+        - lastName
+        - email
+        - emailVerified
+  responses: {}
