@@ -1,0 +1,13 @@
+{
+  "items": [
+    {
+      "type": "divider",
+      "title": "APIS"
+    },
+    {
+      "type": "item",
+      "title": "Addresses",
+      "uri": "reference/Addresses.v1.yaml"
+    }
+  ]
+}
