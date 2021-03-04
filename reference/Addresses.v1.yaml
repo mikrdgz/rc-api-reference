@@ -2,9 +2,11 @@ openapi: 3.0.0
 info:
   title: Addresses
   version: '1.0'
-  description: ''
+  description: |-
+    # What are Addresses?
+    Addresses represent one of the many shipping locations a customer can have. An address is created when a customer purchases a subscription. [Subscriptions](https://recharge.stoplight.io/docs/shop-docs/docs/subscriptions.md) are tied to a given address. Each customer can have multiple address objects in a many-to-one relationship. You can override shipping rates using this endpoint.
 servers:
-  - {}
+  - url: 'https://api.rechargeapps.com/addresses'
 paths:
   /addresses:
     get:
