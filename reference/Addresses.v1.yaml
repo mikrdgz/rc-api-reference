@@ -8,9 +8,9 @@ info:
 servers:
   - url: 'https://api.rechargeapps.com/addresses'
 paths:
-  /addresses:
+  '':
     get:
-      summary: Retrieve an address
+      summary: List addresses
       tags: []
       responses:
         '200':
@@ -134,62 +134,49 @@ paths:
                   - address
               examples: {}
       operationId: get-addresses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            examples: {}
+      description: ''
     post:
       summary: Create an address
       tags: []
       responses: {}
       operationId: post-addresses
+    parameters: []
+  '/:id':
+    get:
+      summary: Retrieve an address
+      tags: []
+      responses: {}
+      operationId: get-id
     put:
       summary: Update an address
       tags: []
       responses: {}
-      operationId: put-addresses
+      operationId: put-id
     delete:
       summary: Delete an address
       tags: []
       responses: {}
-      operationId: delete-addresses
+      operationId: delete-id
+    parameters: []
+  /count:
+    get:
+      summary: Count addresses
+      tags: []
+      responses: {}
+      operationId: get-count
+  /validate:
+    post:
+      summary: Validate an address
+      tags: []
+      responses: {}
+      operationId: post-validate
 components:
-  schemas:
-    User:
-      title: User
-      type: object
-      description: ''
-      x-examples:
-        Alice Smith:
-          id: 142
-          firstName: Alice
-          lastName: Smith
-          email: alice.smith@gmail.com
-          dateOfBirth: '1997-10-31'
-          emailVerified: true
-          signUpDate: '2019-08-24'
-      properties:
-        id:
-          type: integer
-          description: Unique identifier for the given user.
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-          format: email
-        dateOfBirth:
-          type: string
-          format: date
-          example: '1997-10-31'
-        emailVerified:
-          type: boolean
-          description: Set to true if the user's email has been verified.
-        createDate:
-          type: string
-          format: date
-          description: The date that the user was created.
-      required:
-        - id
-        - firstName
-        - lastName
-        - email
-        - emailVerified
+  schemas: {}
   responses: {}
