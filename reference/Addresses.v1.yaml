@@ -217,7 +217,7 @@ paths:
       description: |
         Checks if an address is valid.
 
-        **NOTE:** Address validation only works with United States addresses.
+        **NOTE:** Address validation only works with United States addresses. 
 components:
   schemas: {}
   responses: {}
