@@ -214,10 +214,10 @@ paths:
         '200':
           description: OK
       operationId: post-validate
-      description: |
+      description: |-
         Checks if an address is valid.
 
-        **NOTE:** Address validation only works with United States addresses. 
+        **NOTE:** Address validation only works with United States addresses. At this time we do not validate the `"address1"` attribute.
 components:
   schemas: {}
   responses: {}
