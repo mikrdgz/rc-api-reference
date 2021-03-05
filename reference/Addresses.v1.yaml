@@ -132,21 +132,42 @@ paths:
                       - zip
                 required:
                   - address
-              examples: {}
+              examples:
+                Example:
+                  value:
+                    address:
+                      id: 0
+                      customer_id: 0
+                      address1: string
+                      address2: string
+                      city: string
+                      company: string
+                      country: string
+                      created_at: string
+                      discounts:
+                        - id: 0
+                      first_name: string
+                      last_name: string
+                      note_attributes:
+                        - name: string
+                          value: string
+                      order_note: string
+                      phone: string
+                      province: string
+                      shipping_lines_override:
+                        - code: string
+                          price: string
+                          title: string
+                      updated_at: string
+                      zip: string
       operationId: get-addresses
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties: {}
-            examples: {}
-      description: ''
+      description: Retrieves a list of addresses tied to a ReCharge store.
     post:
       summary: Create an address
       tags: []
       responses: {}
       operationId: post-addresses
+      description: Creates a new address for a customer.
     parameters: []
   '/:id':
     get:
@@ -154,29 +175,49 @@ paths:
       tags: []
       responses: {}
       operationId: get-id
+      description: Retrieves address for a customer based on ID.
     put:
       summary: Update an address
       tags: []
       responses: {}
       operationId: put-id
+      description: Updates the specified address.
     delete:
       summary: Delete an address
       tags: []
       responses: {}
       operationId: delete-id
+      description: Deletes the specified address.
     parameters: []
   /count:
     get:
       summary: Count addresses
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  count:
+                    type: integer
       operationId: get-count
+      description: Retrieves a count of addresses.
   /validate:
     post:
       summary: Validate an address
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
       operationId: post-validate
+      description: |
+        Checks if an address is valid.
+
+        **NOTE:** Address validation only works with United States addresses.
 components:
   schemas: {}
   responses: {}
