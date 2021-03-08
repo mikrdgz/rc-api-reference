@@ -250,26 +250,34 @@ components:
     Address:
       description: ''
       type: object
+      x-examples: {}
+      title: ''
       properties:
         address:
           type: object
           properties:
             id:
-              type: number
+              type: integer
+              description: Unique numeric identifier for the address.
             customer_id:
-              type: number
+              type: integer
+              description: Unique numeric identifier for the customer associated with the address.
             address1:
               type: string
               minLength: 1
+              description: The street associated with the address.
             address2:
               type: string
               minLength: 1
+              description: Any additional information associated with the address.
             city:
               type: string
               minLength: 1
+              description: The city associated with the address.
             company:
               type: string
               minLength: 1
+              description: The company associated with the address.
             country:
               type: string
               minLength: 1
@@ -281,11 +289,10 @@ components:
               uniqueItems: true
               minItems: 1
               items:
-                required:
-                  - id
+                type: object
                 properties:
                   id:
-                    type: number
+                    type: integer
             first_name:
               type: string
               minLength: 1
@@ -297,9 +304,7 @@ components:
               uniqueItems: true
               minItems: 1
               items:
-                required:
-                  - name
-                  - value
+                type: object
                 properties:
                   name:
                     type: string
@@ -321,10 +326,7 @@ components:
               uniqueItems: true
               minItems: 1
               items:
-                required:
-                  - code
-                  - price
-                  - title
+                type: object
                 properties:
                   code:
                     type: string
@@ -341,29 +343,6 @@ components:
             zip:
               type: string
               minLength: 1
-          required:
-            - id
-            - customer_id
-            - address1
-            - address2
-            - city
-            - company
-            - country
-            - created_at
-            - discounts
-            - first_name
-            - last_name
-            - note_attributes
-            - order_note
-            - phone
-            - province
-            - shipping_lines_override
-            - updated_at
-            - zip
-      required:
-        - address
-      x-examples: {}
-      title: ''
     Address-Request:
       description: ''
       type: object
@@ -469,7 +448,7 @@ components:
           minLength: 1
         city:
           type: string
-          minLength: 1  
+          minLength: 1
         state:
           type: string
           minLength: 1
