@@ -18,35 +18,49 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Address'
+                allOf: []
               examples:
                 Example:
                   value:
-                    address:
-                      id: 0
-                      customer_id: 0
-                      address1: string
-                      address2: string
-                      city: string
-                      company: string
-                      country: string
-                      created_at: string
-                      discounts:
-                        - id: 0
-                      first_name: string
-                      last_name: string
-                      note_attributes:
-                        - name: string
-                          value: string
-                      order_note: string
-                      phone: string
-                      province: string
-                      shipping_lines_override:
-                        - code: string
-                          price: string
-                          title: string
-                      updated_at: string
-                      zip: string
+                    addresses:
+                      - address1: 1234 Main St
+                        address2: ''
+                        city: Austin
+                        company: ReCharge
+                        country: United States
+                        created_at: '2020-12-08T15:36:48'
+                        customer_id: 51659309
+                        discounts: []
+                        first_name: Mikaela
+                        id: 58968398
+                        last_name: Rodriguez
+                        note_attributes:
+                          - name: Test
+                            value: value
+                        order_note: Test note
+                        phone: '5551234567'
+                        province: TX
+                        shipping_lines_override: []
+                        updated_at: '2021-03-07T20:20:44'
+                        zip: '78704'
+                      - address1: 1776 Washington Street
+                        address2: ''
+                        city: Los Angeles
+                        company: ReCharge
+                        country: United States
+                        created_at: '2020-12-08T15:31:51'
+                        customer_id: 51659309
+                        discounts: []
+                        first_name: John
+                        id: 58968100
+                        last_name: Doe
+                        note_attributes: null
+                        order_note: null
+                        phone: '5551234567'
+                        province: California
+                        shipping_lines_override: []
+                        updated_at: '2020-12-08T15:31:51'
+                        zip: '90404'
       operationId: get-addresses
       description: Retrieves a list of addresses tied to a ReCharge store.
     post:
@@ -59,7 +73,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Address'
+              $ref: '#/components/schemas/Address-Request'
             examples: {}
           application/xml:
             schema:
@@ -74,19 +88,38 @@ paths:
     get:
       summary: Retrieve an address
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
       operationId: get-id
       description: Retrieves address for a customer based on ID.
     put:
       summary: Update an address
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
       operationId: put-id
       description: Updates the specified address.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address-Request'
     delete:
       summary: Delete an address
       tags: []
-      responses: {}
+      responses:
+        '204':
+          description: No Content
       operationId: delete-id
       description: Deletes the specified address.
     parameters: []
@@ -107,6 +140,37 @@ paths:
                     type: integer
       operationId: get-count
       description: Retrieves a count of addresses.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: created_at_max
+          description: Returns the count of addresses created before the given time.
+        - schema:
+            type: string
+          in: query
+          name: created_at_min
+          description: Returns the count of addresses created after the given time.
+        - schema:
+            type: string
+          in: query
+          name: 'discount_code '
+          description: Returns the count of addresses that have the provided discount_code applied.
+        - schema:
+            type: string
+          in: query
+          name: discount_id
+          description: Returns the count of addresses that have the provided discount_id applied.
+        - schema:
+            type: string
+          in: query
+          name: updated_at_max
+          description: Returns the count of addresses updated before the given date.
+        - schema:
+            type: string
+          in: query
+          name: updated_at_min
+          description: Returns the count of addresses updated after the given time.
   /validate:
     post:
       summary: Validate an address
