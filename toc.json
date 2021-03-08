@@ -2,11 +2,6 @@
   "items": [
     {
       "type": "item",
-      "title": "About",
-      "uri": "docs/About.md"
-    },
-    {
-      "type": "item",
       "title": "Addresses",
       "uri": "reference/Addresses.v1.yaml"
     }
