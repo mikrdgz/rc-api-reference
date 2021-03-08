@@ -18,7 +18,12 @@ paths:
           content:
             application/json:
               schema:
-                allOf: []
+                description: ''
+                type: object
+                properties:
+                  addresses:
+                    type: array
+                    items: {}
               examples:
                 Example:
                   value:
@@ -66,7 +71,13 @@ paths:
     post:
       summary: Create an address
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
       operationId: post-addresses
       description: Creates a new address for a customer.
       requestBody:
@@ -95,6 +106,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Address'
+              examples: {}
       operationId: get-id
       description: Retrieves address for a customer based on ID.
     put:
@@ -138,6 +150,10 @@ paths:
                 properties:
                   count:
                     type: integer
+              examples:
+                Example:
+                  value:
+                    count: 2
       operationId: get-count
       description: Retrieves a count of addresses.
       parameters:
@@ -178,11 +194,28 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Validate-Address'
+              examples:
+                Example:
+                  value:
+                    city: santa monica
+                    errors: {}
+                    state: CA
+                    state_name: California
+                    zipcode: '90404'
       operationId: post-validate
       description: |-
         Checks if an address is valid.
 
         **NOTE:** Address validation only works with United States addresses. At this time we do not validate the `address1` attribute.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Validate-Address'
 components:
   schemas:
     Address:
@@ -398,4 +431,25 @@ components:
         - province
         - shipping_lines_override
         - zip
+    Validate-Address:
+      description: ''
+      type: object
+      properties:
+        address1:
+          type: string
+          minLength: 1
+        state:
+          type: string
+          minLength: 1
+        zipcode:
+          type: string
+          minLength: 1
+        city:
+          type: string
+          minLength: 1
+      required:
+        - address1
+        - state
+        - zipcode
+        - city
   responses: {}
