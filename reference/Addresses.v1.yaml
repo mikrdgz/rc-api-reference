@@ -197,10 +197,39 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Validate-Address'
+                description: ''
+                type: object
+                properties:
+                  address1:
+                    type: string
+                    minLength: 1
+                  city:
+                    type: string
+                    minLength: 1
+                  errors:
+                    type: object
+                    properties: {}
+                    required: []
+                  state:
+                    type: string
+                    minLength: 1
+                  state_name:
+                    type: string
+                    minLength: 1
+                  zipcode:
+                    type: string
+                    minLength: 1
+                required:
+                  - address1
+                  - city
+                  - errors
+                  - state
+                  - state_name
+                  - zipcode
               examples:
                 Example:
                   value:
+                    address1: 100 Main St
                     city: santa monica
                     errors: {}
                     state: CA
@@ -438,13 +467,13 @@ components:
         address1:
           type: string
           minLength: 1
+        city:
+          type: string
+          minLength: 1  
         state:
           type: string
           minLength: 1
         zipcode:
-          type: string
-          minLength: 1
-        city:
           type: string
           minLength: 1
       required:
