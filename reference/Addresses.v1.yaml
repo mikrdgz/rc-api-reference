@@ -78,6 +78,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Address'
+              examples:
+                Example:
+                  value:
+                    address:
+                      id: 42171447
+                      customer_id: 37657002
+                      address1: 1030 Barnum Ave
+                      address2: Suite 101
+                      city: Stratford
+                      company: Fake Company
+                      country: United States
+                      created_at: '2020-02-19T17:40:09'
+                      discounts:
+                        - id: 123456
+                        - id: 788901
+                      first_name: Fake First
+                      last_name: Fake Last
+                      note_attributes:
+                        - name: custom name
+                          value: custom value
+                      order_note: My recurring order note
+                      phone: 999-999-9999
+                      province: Connecticut
+                      shipping_lines_override:
+                        - code: Standard Shipping
+                          price: '0.00'
+                          title: Standard Shipping
+                      updated_at: '2020-12-17T18:50:27'
+                      zip: '06614'
       operationId: post-addresses
       description: Creates a new address for a customer.
       requestBody:
