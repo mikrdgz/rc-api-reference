@@ -284,12 +284,6 @@ components:
       properties:
         address:
           type: object
-          required:
-            - customer_id
-            - address1
-            - city
-            - country
-            - province
           properties:
             id:
               type: integer
@@ -343,6 +337,7 @@ components:
               type: array
               uniqueItems: true
               minItems: 1
+              description: Array of key-value pairs.
               items:
                 type: object
                 properties:
@@ -355,7 +350,7 @@ components:
             order_note:
               type: string
               minLength: 1
-              description: Notes added to all orders associated with the address
+              description: Notes added to all orders associated with the address.
             phone:
               type: string
               minLength: 1
@@ -389,6 +384,12 @@ components:
               type: string
               minLength: 1
               description: Zip code of the street address. Required based on country.
+          required:
+            - customer_id
+            - address1
+            - city
+            - country
+            - province
     Address-Request:
       description: ''
       type: object
@@ -396,42 +397,50 @@ components:
         address1:
           type: string
           minLength: 1
+          description: The street associated with the address.
         address2:
           type: string
           minLength: 1
+          description: Any additional information associated with the address.
         city:
           type: string
           minLength: 1
+          description: The city associated with the address.
         company:
           type: string
           minLength: 1
+          description: The company associated with the address.
         country:
           type: string
           minLength: 1
+          description: The country associated with the address.
         discounts:
           type: array
           uniqueItems: true
           minItems: 1
           items:
-            required:
-              - id
+            type: object
             properties:
               id:
-                type: number
+                type: integer
+                description: Id of the discount you want to apply to an address.
+            required:
+              - id
         first_name:
           type: string
           minLength: 1
+          description: The customer’s first name associated with the address. Minimum length is 1 character.
         last_name:
           type: string
           minLength: 1
+          description: The customer’s last name associated with the address. Minimum length is 1 character.
         note_attributes:
           type: array
           uniqueItems: true
           minItems: 1
+          description: Array of key-value pairs.
           items:
-            required:
-              - name
-              - value
+            type: object
             properties:
               name:
                 type: string
@@ -442,21 +451,22 @@ components:
         order_note:
           type: string
           minLength: 1
+          description: Notes added to all orders associated with the address.
         phone:
           type: string
           minLength: 1
+          description: The phone number associated with the address. Required based on store settings.
         province:
           type: string
           minLength: 1
+          description: The state or province associated to address. Check if country requires a province COUNTRIES_REQUIRING_PROVINCE.
         shipping_lines_override:
           type: array
           uniqueItems: true
           minItems: 1
+          description: Used when shipping rates need to be overridden.
           items:
-            required:
-              - code
-              - price
-              - title
+            type: object
             properties:
               code:
                 type: string
@@ -470,21 +480,12 @@ components:
         zip:
           type: string
           minLength: 1
+          description: Zip code of the street address. Required based on country.
       required:
         - address1
-        - address2
         - city
-        - company
         - country
-        - discounts
-        - first_name
-        - last_name
-        - note_attributes
-        - order_note
-        - phone
         - province
-        - shipping_lines_override
-        - zip
     Validate-Address:
       description: ''
       type: object
