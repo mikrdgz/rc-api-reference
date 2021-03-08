@@ -255,6 +255,12 @@ components:
       properties:
         address:
           type: object
+          required:
+            - customer_id
+            - address1
+            - city
+            - country
+            - province
           properties:
             id:
               type: integer
@@ -281,9 +287,11 @@ components:
             country:
               type: string
               minLength: 1
+              description: The country associated with the address.
             created_at:
               type: string
               minLength: 1
+              description: The date and time when the address was created.
             discounts:
               type: array
               uniqueItems: true
@@ -293,12 +301,15 @@ components:
                 properties:
                   id:
                     type: integer
+                    description: Id of the discount you want to apply to an address.
             first_name:
               type: string
               minLength: 1
+              description: The customer’s first name associated with the address. Minimum length is 1 character.
             last_name:
               type: string
               minLength: 1
+              description: The customer’s last name associated with the address. Minimum length is 1 character.
             note_attributes:
               type: array
               uniqueItems: true
@@ -315,16 +326,20 @@ components:
             order_note:
               type: string
               minLength: 1
+              description: Notes added to all orders associated with the address
             phone:
               type: string
               minLength: 1
+              description: The phone number associated with the address. Required based on store settings.
             province:
               type: string
               minLength: 1
+              description: The state or province associated to address. Check if country requires a province COUNTRIES_REQUIRING_PROVINCE.
             shipping_lines_override:
               type: array
               uniqueItems: true
               minItems: 1
+              description: Used when shipping rates need to be overridden.
               items:
                 type: object
                 properties:
@@ -340,9 +355,11 @@ components:
             updated_at:
               type: string
               minLength: 1
+              description: The date and time when the address was last updated.
             zip:
               type: string
               minLength: 1
+              description: Zip code of the street address. Required based on country.
     Address-Request:
       description: ''
       type: object
